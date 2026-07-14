@@ -13,6 +13,15 @@ pinned: false
 
 A production-ready document extraction system for receipts and invoices with modular architecture, powered by YOLO layout detection, Tesseract OCR, and LayoutLMv3 key information extraction.
 
+## Project Overview
+
+This repository contains the full end-to-end Smart Document Extraction workflow, including:
+- document image samples
+- trained model checkpoints
+- training notebooks for each development phase
+- the inference pipeline and export utilities
+- a Gradio-based web app for testing
+
 ## Features ✨
 
 - **Multi-format Extraction**: Receipts, invoices, and structured documents
@@ -119,25 +128,38 @@ Output: JSON + Overlay Image + Export Files
 ## Project Structure
 
 ```
-sdep-space/
-├── app.py                  # Gradio web UI (HF Spaces entry point)
-├── app_local.py            # Local debugging script
-├── requirements.txt        # Python dependencies
-├── output_formatter.py     # Export handlers (JSON/CSV/Excel/PDF/DOCX)
-├── packages.txt            # System dependencies
-├── src/
-│   ├── pipeline.py         # Main pipeline orchestrator
-│   ├── layout_detector.py  # YOLO26 wrapper
-│   ├── ocr_engine.py       # Tesseract wrapper
-│   ├── kie_model.py        # LayoutLMv3 wrapper
-│   ├── json_structurer.py  # Pydantic schema + extraction logic
-│   ├── schema.py           # Data models
-│   └── visualiser.py       # Image annotation & visualization
-├── models/
-│   ├── layoutlmv3_cord/    # KIE model (LayoutLMv3)
-│   └── yolo26_doclaynet/   # Layout detection model (YOLO26)
-├── examples/               # Sample receipts/invoices for testing
-└── README.md               # This file
+Smart-Document-Extraction/
+├── app.py                                # Gradio web UI
+├── app_local.py                          # Local debugging and sample run script
+├── requirements.txt                      # Python dependencies
+├── packages.txt                          # System-level dependencies
+├── output_formatter.py                   # Export utilities for JSON/CSV/Excel/PDF
+├── example_1.csv                         # Sample CSV output
+├── example_1.pdf                         # Sample PDF output
+├── example_2.xlsx                       # Sample Excel output
+├── examples/                             # Sample document images
+│   ├── example_1.jpg
+│   ├── example_2.jpg
+│   └── example_3.jpg
+├── models/                               # Pretrained model checkpoints
+│   ├── layoutlmv3_cord/best/
+│   └── yolo26_doclaynet/
+├── phase by phase model traning/        # Jupyter notebooks for each training phase
+│   ├── phase1-data-explorationebd24f8e4e.ipynb
+│   ├── phase2-yolo-layout-finetuning.ipynb
+│   ├── phase3-paddleocr-integration.ipynb
+│   ├── phase4-layoutlmv3-kie.ipynb
+│   ├── phase5-pipeline-integration.ipynb
+│   └── phase6-donut-baseline.ipynb
+├── src/                                  # Core project modules
+│   ├── pipeline.py
+│   ├── layout_detector.py
+│   ├── ocr_engine.py
+│   ├── kie_model.py
+│   ├── json_structurer.py
+│   ├── schema.py
+│   └── visualiser.py
+└── README.md                             # Project documentation
 ```
 
 ## Configuration
@@ -353,7 +375,7 @@ If you use this project, please cite:
 ## Contact
 
 Author: Daud Shah  
-Email: [your-email@example.com](mailto:your-email@example.com)  
+Email: [sdaud4214@gmail.com](mailto:sdaud4214@gmail.com)  
 LinkedIn: [Your Profile](https://linkedin.com/in/yourusername)
 
 ---
